@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vector Search</title>
+</head>
+<body>
+<h1>Поисковая система (на txtai)</h1>
+<form action="/search" method="post">
+    <input type="text" name="query" placeholder="Введите запрос" value="{{ query or '' }}">
+    <button type="submit">Поиск</button>
+</form>
+{% if results %}
+<h2>Результаты:</h2>
+<ul>
+    {% for doc, score in results %}
+    <li>{{ doc }} — {{ "{:.4f}".format(score) }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
